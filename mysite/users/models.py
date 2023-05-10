@@ -6,18 +6,12 @@ class Users(models.Model):
 	users_name = models.CharField(max_length = 20) # 監控人的名稱
 	level = models.CharField(choices=level_list, max_length=20) # 監控人的帳號級別
 	phone = models.CharField(max_length = 20) # 監控人的電話號碼
-	#password = models.CharField(max_length = 15) #密碼
-	#e_mail = models.EmailField(max_length = 254) #E-mail
-
-class account(models.Model):
 	password = models.CharField(max_length = 15) #密碼
 	e_mail = models.EmailField(max_length = 254) #E-mail
-	account = models.ForeignKey(Users, on_delete=models.CASCADE)
 
 class Vehicle(models.Model):
 	vehicle_name = models.CharField(max_length = 20) #穿戴者名稱
-	#uids   = models.CharField(max_length = 15) #穿戴裝置ID
-	vehicle = models.ForeignKey(Users, on_delete=models.CASCADE) #當最上層監控被刪除,底層的被監控人都會被連帶刪除
+	uids   = models.CharField(max_length = 15) #穿戴裝置ID
 
 class Doctor(models.Model):
 	genders = (('F','Female'),('M','Male'))
